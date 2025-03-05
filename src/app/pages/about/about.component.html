@@ -14,3 +14,13 @@
 <p>Affichage brut {{ date }}</p>
 <p>Affichage formatté {{ date | date : 'le d MMMM yyyy' : undefined:  'fr-BE' }}</p>
 <p>Affichage formatté {{ date | date : 'dd/MM/yyyy' }}</p>
+
+<h2>Boucles</h2>
+@for (item of tableau; track $index) {
+    <p>{{ item }}</p>
+}
+
+<h2>Custom Pipes</h2>
+@for (item of tableau | sliceArray : 2; track $index) {
+    <p>{{ item }}</p>
+}

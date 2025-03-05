@@ -1,0 +1,6 @@
+<h2>{{ ms|toTime }}</h2>
+<div class="buttons">
+    <button [disabled]="idInterval" (click)="start()">Start</button>
+    <button [disabled]="!idInterval" (click)="stop()">Stop</button>
+    <button [disabled]="ms === 0" (click)="reset()">Reset</button>
+</div>
