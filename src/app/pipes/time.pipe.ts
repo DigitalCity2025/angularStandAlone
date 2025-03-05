@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimePipe implements PipeTransform {
 
-  transform(total: number, ...args: unknown[]): string {
+  transform(total: number): string {
     let h = Math.floor(total / 3600000).toString().padStart(2, '0');
     let m = Math.floor((total / 60000) % 60).toString().padStart(2, '0');
     let s = Math.floor((total / 1000) % 60).toString().padStart(2, '0');
