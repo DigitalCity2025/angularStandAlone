@@ -15,11 +15,16 @@ export class ConfirmBoxComponent {
   // onResponse: EventEmitter<boolean> = new EventEmitter();
   onResponse = output<boolean>();
 
+  visible = input.required<boolean>();
+  // visibleChange = output<boolean>();
+
   cancel() {
+    // this.visibleChange.emit(false);
     this.onResponse.emit(false);
   }
 
   confirm() {
+    // this.visibleChange.emit(false);
     this.onResponse.emit(true);
   }
 }

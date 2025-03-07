@@ -1,20 +1,26 @@
 <!-- contenu commun des pages -->
 <header>
-  Demo Angular Standalone 
+  Demo Angular Standalone
 </header>
 
+<div class="flex">
 <nav>
   <ul>
     @for (r of navRoutes; track $index) {
       @if(r.show) {
-        <li><a [routerLink]="r.path">{{ r.title }}</a></li>
+        <li><a [routerLink]="r.path" routerLinkActive="active">{{ r.title }}</a></li>
       }
     }
   </ul>
 </nav>
 
-<!-- les pages s'afficheront ici -->
-<router-outlet></router-outlet>
+<main>
+  <!-- les pages s'afficheront ici -->
+  <router-outlet></router-outlet>
+  <!-- contenu commum des pages -->
+  <footer>&copy; 2025 - Digital City</footer>
+</main>
+</div>
 
-<!-- contenu commum des pages -->
-<footer>&copy; 2025 - Digital City</footer>
+
+

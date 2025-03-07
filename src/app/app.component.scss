@@ -1,3 +1,55 @@
+:host {
+    min-height: 100vh;
+    display: block;
+}
+
 header {
+    height: 70px;
+    background-color: rgb(180, 22, 146);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-size: 26px;
+}
+
+.flex {
+    display: flex;
     
+    nav {
+        display: flex;
+        min-height: calc(100vh - 70px);
+        flex-direction: column;
+        background-color: #373a50;
+        width: 300px;
+        ul {
+            li {
+                a {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding: 20px;
+                    color: white;
+                    text-decoration: none;
+                    background-color: rgb(21, 19, 27);
+                    border: 1px solid rgb(48, 6, 70);
+                    &.active {
+                        background-color: rgb(66, 14, 89);
+                    }
+                }
+            }
+        }
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: calc(100vh - 70px);
+        margin: 20px;
+        footer {
+            text-align: center;
+            margin-top: auto;
+        }
+    }
 }

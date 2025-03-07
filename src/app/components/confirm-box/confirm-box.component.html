@@ -1,9 +1,14 @@
-<div class="confirm-box">
-    <div>
-        {{ message() }}
+@if(visible()) {
+    <div class="backdrop">
+        <div class="confirm-box">
+            <div>
+                {{ message() }}
+            </div>
+            <div class="buttons">
+                <button (click)="cancel()">Annuler</button>
+                <button (click)="confirm()">Confirmer</button>
+            </div>
+        </div>
     </div>
-    <div class="buttons">
-        <button (click)="cancel()">Annuler</button>
-        <button (click)="confirm()">Confirmer</button>
-    </div>
-</div>
+}
+

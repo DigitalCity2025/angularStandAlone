@@ -5,10 +5,8 @@
     <button [disabled]="ms === 0" (click)="reset()">Reset</button>
 </div>
 
-@if(showConfirmBox) {
-    <app-confirm-box 
-        (onResponse)="confirmReset($event)"
-        message="Voulez vous vraiment réinitialiser le chrono ?"
-    ></app-confirm-box>
-
-}
+<app-confirm-box 
+    [(visible)]="showConfirmBox"
+    (onResponse)="confirmReset($event)"
+    message="Voulez vous vraiment réinitialiser le chrono ?"
+></app-confirm-box>
