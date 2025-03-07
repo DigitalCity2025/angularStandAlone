@@ -1,0 +1,12 @@
+<div class="form">
+    <input 
+        type="number" 
+        [ngModel]="taille" 
+        (ngModelChange)="taille = $event" 
+        placeholder="Taille (cm)">
+    <input 
+        type="number" 
+        [(ngModel)]="poids" 
+        placeholder="Poids (kg)">
+</div>
+<p>Votre BMI: {{ bmi | number: '0.0-2' : 'fr-BE' }}</p>

@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { SlicePipe } from "../../pipes/slice.pipe";
 
 @Component({
-  selector: 'app-about',
   imports: [CommonModule, SlicePipe],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'

@@ -4,7 +4,6 @@ import { CardModel } from '../../models/card.model';
 import { ChronoComponent } from "../../components/chrono/chrono.component";
 
 @Component({
-  selector: 'app-home',
   imports: [CardComponent, ChronoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
