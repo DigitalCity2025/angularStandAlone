@@ -16,15 +16,15 @@ export class ConfirmBoxComponent {
   onResponse = output<boolean>();
 
   visible = input.required<boolean>();
-  // visibleChange = output<boolean>();
+  visibleChange = output<boolean>();
 
   cancel() {
-    // this.visibleChange.emit(false);
+    this.visibleChange.emit(false);
     this.onResponse.emit(false);
   }
 
   confirm() {
-    // this.visibleChange.emit(false);
+    this.visibleChange.emit(false);
     this.onResponse.emit(true);
   }
 }

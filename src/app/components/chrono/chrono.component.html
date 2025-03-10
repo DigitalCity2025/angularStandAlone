@@ -6,7 +6,7 @@
 </div>
 
 <app-confirm-box 
-    [visible]="showConfirmBox"
+    [(visible)]="showConfirmBox"
     (onResponse)="confirmReset($event)"
     message="Voulez vous vraiment réinitialiser le chrono ?"
 ></app-confirm-box>

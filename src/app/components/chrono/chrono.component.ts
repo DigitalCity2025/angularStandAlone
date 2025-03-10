@@ -42,7 +42,6 @@ export class ChronoComponent {
   }
 
   confirmReset(ok: boolean) {
-    this.showConfirmBox = false;
     if(ok) {
       this.stop();
       this.ms = 0;

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ArticleModel } from '../../models/article.model';
 import { FormsModule } from '@angular/forms';
 import { ConfirmBoxComponent } from "../../components/confirm-box/confirm-box.component";
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from "../home/home.component";
+import { ListCourseService } from '../../services/list-course.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -16,23 +17,23 @@ export class ShoppingListComponent {
   articleName: string|null = null;
   articleIsImportant: boolean = false;
 
-  list: ArticleModel[] = [];
+  listCourseService = inject(ListCourseService);
 
   add() {
     if(!this.articleName?.trim()) {
       return;
     }
-    this.list.push({
-      name: this.articleName.trim(),
-      isImportant: this.articleIsImportant
-    });
+    this.listCourseService.add({
+        name: this.articleName.trim(),
+        isImportant: this.articleIsImportant
+    })
     this.articleName = null;
     this.articleIsImportant = false;
   }
 
   delete(response: boolean, item: ArticleModel) {
     if(response) {
-      this.list = this.list.filter(i => i !== item);
+      this.listCourseService.delete(item);
     }
   }
 }
