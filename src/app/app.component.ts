@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { routes } from './app.routes';
 import { NavRoutes } from './types/nav-routes';
 import { CommonModule } from '@angular/common';
+import { ListCourseService } from './services/list-course.service';
 // import { Ressource2 } from './app.config';
 
 @Component({
@@ -17,6 +18,7 @@ export class AppComponent {
   // injection par propriétés
   // autreRessource = inject(Ressource2);
   ressource = inject(Injector).get('ressource1');
+  listCourseService = inject(ListCourseService);
 
   constructor(
     // @Inject('ressource1') ressource: number,

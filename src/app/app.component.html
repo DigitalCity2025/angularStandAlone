@@ -1,6 +1,10 @@
 <!-- contenu commun des pages -->
 <header>
   Demo Angular Standalone
+  <p>
+    {{ listCourseService.list().length }} éléments
+    <button (click)="listCourseService.clear()">Tout effacer</button>
+  </p>
 </header>
 
 <div class="flex">
