@@ -2,6 +2,7 @@ import { ApplicationConfig, Injectable, provideZoneChangeDetection } from '@angu
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
 // @Injectable({ providedIn: 'root' })
 // export class Ressource2 {
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
     { provide: 'ressource1', useValue: 42 },
+    provideHttpClient(),
   ]
 };
 
