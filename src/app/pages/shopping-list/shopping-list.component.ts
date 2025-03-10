@@ -3,6 +3,7 @@ import { ArticleModel } from '../../models/article.model';
 import { FormsModule } from '@angular/forms';
 import { ConfirmBoxComponent } from "../../components/confirm-box/confirm-box.component";
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from "../home/home.component";
 
 @Component({
   selector: 'app-shopping-list',
