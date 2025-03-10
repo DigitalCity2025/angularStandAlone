@@ -1,0 +1,17 @@
+
+<div>
+    <input type="text" [(ngModel)]="codeBarre">
+    <button (click)="search()">Rechercher</button>
+</div>
+
+@if(result) {
+    @if(result.status.includes('success')) {
+        <div>
+            <p>Nom du produit : {{ result.product.product_name }}</p>
+            <p>Nutriscore : {{ result.product.nutriscore[2023].grade | uppercase }}</p>
+            <img [src]="result.product.image_front_url">
+        </div>
+    }@else {
+        <p>Produit non répertorié</p>
+    }
+}
