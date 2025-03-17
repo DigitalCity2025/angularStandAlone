@@ -4,6 +4,13 @@
     <button (click)="search()">Rechercher</button>
 </div>
 
+<div>
+    <zxing-scanner (scanSuccess)="onScan($event)" 
+                   [enable]="true"
+                   [autostart]="true"
+                   [formats]="[BarcodeFormat.EAN_13]"></zxing-scanner>
+</div>
+
 @if(result) {
     @if(result.status.includes('success')) {
         <div>

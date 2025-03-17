@@ -8,7 +8,7 @@ import { ProductResult } from '../models/product-result.model';
 export class ProductService {
 
   httpClient = inject(HttpClient);
-  constructor() { }
+  constructor(/*public httpClient: HttpClient*/) { }
 
   search(codeBarre: string) {
     return this.httpClient.get<ProductResult>(
