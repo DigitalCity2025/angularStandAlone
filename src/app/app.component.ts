@@ -7,11 +7,12 @@ import { ListCourseService } from './services/list-course.service';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of, retry } from 'rxjs';
 import { captureError } from 'rxjs/internal/util/errorContext';
+import { Toast } from 'primeng/toast';
 // import { Ressource2 } from './app.config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, Toast],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -63,5 +64,9 @@ export class AppComponent {
       // en cas d'erreur
       error: () => {}
     });
+  }
+
+  deleteAll() {
+    this.listCourseService.clear().subscribe()
   }
 }

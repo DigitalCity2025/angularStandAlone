@@ -4,7 +4,7 @@
   <p>{{temp}}°C</p>
   <p>
     {{ count() }} éléments
-    <button (click)="listCourseService.clear()">Tout effacer</button>
+    <button (click)="deleteAll()">Tout effacer</button>
   </p>
 </header>
 
@@ -26,6 +26,8 @@
   <footer>&copy; 2025 - Digital City</footer>
 </main>
 </div>
+
+<p-toast></p-toast>
 
 
 
