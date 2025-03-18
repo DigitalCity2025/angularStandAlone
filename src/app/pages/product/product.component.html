@@ -8,7 +8,8 @@
     <zxing-scanner (scanSuccess)="onScan($event)" 
                    [enable]="true"
                    [autostart]="true"
-                   [formats]="[BarcodeFormat.EAN_13]"></zxing-scanner>
+                   [formats]="[BarcodeFormat.EAN_13]"
+                   [device]=""></zxing-scanner>
 </div>
 
 @if(result) {

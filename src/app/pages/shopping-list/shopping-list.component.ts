@@ -38,7 +38,13 @@ export class ShoppingListComponent {
 
   delete(response: boolean, item: ArticleModel) {
     if(response) {
-      this.listCourseService.delete(item);
+      this.listCourseService.delete(item)
+        .subscribe({
+          next: () => {
+            
+          },
+          error: () => {},
+        });
     }
   }
 }

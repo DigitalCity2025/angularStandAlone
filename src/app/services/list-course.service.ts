@@ -1,7 +1,7 @@
 import { inject, Injectable, signal, Signal } from '@angular/core';
 import { ArticleModel } from '../models/article.model';
 import { HttpClient } from '@angular/common/http';
-import { catchError, forkJoin, of, tap } from 'rxjs';
+import { forkJoin, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

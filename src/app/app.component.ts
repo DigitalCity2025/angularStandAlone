@@ -8,11 +8,12 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, of, retry } from 'rxjs';
 import { captureError } from 'rxjs/internal/util/errorContext';
 import { Toast } from 'primeng/toast';
+import { LoaderComponent } from "./components/loader/loader.component";
 // import { Ressource2 } from './app.config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, Toast],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, Toast, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

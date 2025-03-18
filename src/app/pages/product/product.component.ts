@@ -20,6 +20,7 @@ export class ProductComponent {
   result: ProductResult|null = null;
 
   BarcodeFormat = BarcodeFormat;
+  MediaDeviceInfo = MediaDeviceInfo
 
   search() {
     if(!this.codeBarre) {

@@ -4,6 +4,8 @@ import { NavRoutes } from './types/nav-routes';
 import { BmiComponent } from './pages/bmi/bmi.component';
 import { ShoppingListComponent } from './pages/shopping-list/shopping-list.component';
 import { ProductComponent } from './pages/product/product.component';
+import { authenticatedGuard } from './guards/authenticated.guard';
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: NavRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full', show: false },
@@ -15,11 +17,23 @@ export const routes: NavRoutes = [
         title: 'Calcul de BMI',
         show: true 
     },
-    { path: 'shop-list', title: 'Liste de courses', component: ShoppingListComponent, show: true },
+    { 
+        path: 'shop-list', 
+        title: 'Liste de courses', 
+        component: ShoppingListComponent, 
+        show: true,
+        canActivate: [authenticatedGuard]
+    },
     {
         path: 'product',
         title: 'Rechercher un Produit',
         component: ProductComponent,
+        show: true
+    },
+    {
+        path: 'login',
+        title: 'Se Connecter',
+        component: LoginComponent,
         show: true
     }
 ];
