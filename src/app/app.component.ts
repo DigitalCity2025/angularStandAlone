@@ -9,6 +9,7 @@ import { catchError, of, retry } from 'rxjs';
 import { captureError } from 'rxjs/internal/util/errorContext';
 import { Toast } from 'primeng/toast';
 import { LoaderComponent } from "./components/loader/loader.component";
+import { SessionService } from './services/session.service';
 // import { Ressource2 } from './app.config';
 
 @Component({
@@ -25,6 +26,7 @@ export class AppComponent {
   ressource = inject(Injector).get('ressource1');
   listCourseService = inject(ListCourseService);
   httpClient = inject(HttpClient);
+  sessionService = inject(SessionService);
 
   // count = 0;
   count: Signal<number>

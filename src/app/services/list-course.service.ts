@@ -1,7 +1,8 @@
-import { inject, Injectable, signal, Signal } from '@angular/core';
+import { effect, inject, Injectable, signal, Signal } from '@angular/core';
 import { ArticleModel } from '../models/article.model';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, tap } from 'rxjs';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,19 @@ import { forkJoin, tap } from 'rxjs';
 export class ListCourseService {
 
   list = signal<ArticleModel[]>([]);
-  httpClient = inject(HttpClient)
+  httpClient = inject(HttpClient);
+  sessionService = inject(SessionService)
 
   constructor() { 
-    this.loadData();
+    // execute la fonction a chaque fois que le signal (session()) est modifié
+    effect(() => {
+      if(this.sessionService.session().isAuthenticated) {
+        this.loadData();
+      }
+      else {
+        this.list.set([])
+      }
+    })
   }
 
   loadData() {

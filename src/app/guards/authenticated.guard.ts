@@ -1,10 +1,11 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { SessionService } from '../services/session.service';
 
 export const authenticatedGuard: CanActivateFn = (route, state) => {
   
   // si on est connecté
-  if(localStorage.getItem('TOKEN')) {
+  if(inject(SessionService).session().isAuthenticated) {
     return true;
     // autoriser (return true)
   }

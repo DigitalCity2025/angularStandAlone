@@ -5,6 +5,7 @@ import { ConfirmBoxComponent } from "../../components/confirm-box/confirm-box.co
 import { CommonModule } from '@angular/common';
 import { ListCourseService } from '../../services/list-course.service';
 import { MessageService } from 'primeng/api';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -19,6 +20,11 @@ export class ShoppingListComponent {
 
   listCourseService = inject(ListCourseService);
   messageService = inject(MessageService);
+  sessionService = inject(SessionService);
+
+  constructor() {
+    //this.listCourseService.loadData();
+  }
 
   add() {
     if(!this.articleName?.trim()) {

@@ -3,8 +3,14 @@
   Demo Angular Standalone
   <p>{{temp}}°C</p>
   <p>
-    {{ count() }} éléments
-    <button (click)="deleteAll()">Tout effacer</button>
+    @if(sessionService.session().isAuthenticated) {
+      {{ count() }} éléments
+      @if(sessionService.session().role === 'Admin') {
+        <button (click)="deleteAll()">Tout effacer</button>
+      }
+    } @else {
+      <a routerLink="login">Se connecter</a>
+    }
   </p>
 </header>
 
