@@ -19,10 +19,24 @@
     <button (click)="addCategory()">Ajouter une categorie</button>
 
     <div formArrayName="categories">
-        @for(control of form.controls['categories'].controls; track $index) {
-            <input [formControlName]="$index">
+        @for(control of form.controls['categories'].controls; track control) {
+            <div>
+                <input [formControlName]="$index">
+                <button (click)="removeCategory($index)">Supprimer</button>
+            </div>
         }
     <p>{{form.controls['categories'].errors | json}}</p>
+    </div>
+
+    <button (click)="addActor()">Ajouter un acteur</button>
+    <div formArrayName="actors">
+        @for(control of form.controls['actors'].controls; track control) {
+            <div [formGroupName]="$index">
+                <input formControlName="lastName">
+                <input formControlName="firstName">
+                <button (click)="removeActor($index)">Supprimer</button>
+            </div>
+        }
     </div>
 
 

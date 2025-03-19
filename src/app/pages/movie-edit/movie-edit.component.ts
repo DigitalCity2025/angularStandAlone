@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-edit',
@@ -19,7 +19,10 @@ export class MovieEditComponent {
     }, { validators: [] }),
     duration: [null, [Validators.min(1), Validators.max(999999)]],
     actors: this.formBuilder.array([], { validators: [Validators.minLength(1)] }),
-    categories: this.formBuilder.array([], { validators: [Validators.minLength(1)] }),
+    categories: this.formBuilder.array([], { validators: [
+      control => (control.value.length < 1 || control.value.every((v: any) => 
+          !v)) ? { minlength: true } : null
+    ] }),
   })
 
   constructor() {
@@ -28,11 +31,23 @@ export class MovieEditComponent {
   }
 
   addActor() {
-
+    (this.form.controls['actors'] as FormArray)
+      .push(this.formBuilder.group({
+        lastName: [null, [Validators.required]],
+        firstName: [null, [Validators.required]]
+      }))
   }
 
   addCategory() {
     this.form.controls['categories']
       .push(this.formBuilder.control(null, [Validators.required]))
+  }
+
+  removeCategory(i: number) {
+    this.form.controls['categories'].removeAt(i)
+  }
+
+  removeActor(i : number) {
+    this.form.controls['actors'].removeAt(i)
   }
 }
