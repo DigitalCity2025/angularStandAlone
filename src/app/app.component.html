@@ -8,6 +8,7 @@
       @if(sessionService.session().role === 'Admin') {
         <button (click)="deleteAll()">Tout effacer</button>
       }
+      <button (click)="logout()">Se deconnecter</button>
     } @else {
       <a routerLink="login">Se connecter</a>
     }

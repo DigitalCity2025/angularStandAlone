@@ -1,5 +1,5 @@
 import { Component, computed, effect, Inject, inject, Injector, Signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { routes } from './app.routes';
 import { NavRoutes } from './types/nav-routes';
 import { CommonModule } from '@angular/common';
@@ -27,6 +27,7 @@ export class AppComponent {
   listCourseService = inject(ListCourseService);
   httpClient = inject(HttpClient);
   sessionService = inject(SessionService);
+  router = inject(Router);
 
   // count = 0;
   count: Signal<number>
@@ -71,5 +72,10 @@ export class AppComponent {
 
   deleteAll() {
     this.listCourseService.clear().subscribe()
+  }
+
+  logout() {
+    this.sessionService.clear();
+    this.router.navigate(['login'])
   }
 }
