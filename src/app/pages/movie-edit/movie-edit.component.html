@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+
+    <input type="text" formControlName="title">
+    {{ form.controls['title'].errors | json }}
+
+    <input type="number" formControlName="duration">
+    {{ form.controls['duration'].errors | json }}
+
+
+    <br>
+
+    <div [formGroup]="form.controls['director']">
+        <input type="text" formControlName="lastName">
+        {{ form.controls['director'].controls['lastName'].errors| json }}
+        <input type="text" formControlName="firstName">
+        {{ form.controls['director'].controls['firstName'].errors| json }}
+    </div>
+
+    <button (click)="addCategory()">Ajouter une categorie</button>
+
+    <div formArrayName="categories">
+        @for(control of form.controls['categories'].controls; track $index) {
+            <input [formControlName]="$index">
+        }
+    <p>{{form.controls['categories'].errors | json}}</p>
+    </div>
+
+
+    <br>
+    {{ form.value | json }}
+</form>
