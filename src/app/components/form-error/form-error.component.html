@@ -3,11 +3,7 @@
         <p>Le champs est requis</p>
     }
     @if(control().getError('maxlength')) {
-        <p>Le champs est trop long (
-            {{control().getError('maxlength').actualLength}}
-            /
-            {{control().getError('maxlength').requiredLength}})
-        </p>
+        <p>Le champs est trop long ({{control().getError('maxlength').actualLength}}/{{control().getError('maxlength').requiredLength}})</p>
     }
     @if(control().getError('minlength')) {
         <p>Le champs est trop court (
@@ -19,5 +15,8 @@
     }
     @if(control().getError('max')) {
         <p>La valeur est trop grande (max: {{ control().getError('max').max }})</p>
+    }
+    @if(control().getError('email')) {
+        <p>L'email n'est pas valide</p>
     }
 }

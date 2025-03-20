@@ -12,12 +12,14 @@ import { FormErrorComponent } from "../../components/form-error/form-error.compo
 export class MovieEditComponent {
   formBuilder = inject(FormBuilder);
 
+  directorForm = this.formBuilder.group({
+    lastName: [null, [Validators.required]],
+    firstName: [null, [Validators.required]]
+  }, { validators: [] })
+
   form = this.formBuilder.group({
     title: [null, [Validators.required, Validators.maxLength(100)]],
-    director: this.formBuilder.group({
-      lastName: [null, [Validators.required]],
-      firstName: [null, [Validators.required]]
-    }, { validators: [] }),
+    director: this.directorForm,
     duration: [null, [Validators.min(1), Validators.max(999999)]],
     actors: this.formBuilder.array([], { validators: [Validators.minLength(1)] }),
     categories: this.formBuilder.array([], { validators: [
