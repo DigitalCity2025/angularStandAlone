@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormErrorComponent } from "../../components/form-error/form-error.component";
 
 @Component({
   selector: 'app-movie-edit',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormErrorComponent],
   templateUrl: './movie-edit.component.html',
   styleUrl: './movie-edit.component.scss'
 })

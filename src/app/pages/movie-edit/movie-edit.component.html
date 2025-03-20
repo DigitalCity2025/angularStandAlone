@@ -1,19 +1,21 @@
 <form [formGroup]="form">
 
     <input type="text" formControlName="title">
-    {{ form.controls['title'].errors | json }}
+    <app-form-error [control]="form.controls['title']"></app-form-error>
+
+    <br>
 
     <input type="number" formControlName="duration">
-    {{ form.controls['duration'].errors | json }}
+    <app-form-error [control]="form.controls['duration']"></app-form-error>
 
 
     <br>
 
     <div [formGroup]="form.controls['director']">
         <input type="text" formControlName="lastName">
-        {{ form.controls['director'].controls['lastName'].errors| json }}
+        <app-form-error [control]="form.controls['director'].controls['lastName']"></app-form-error>
         <input type="text" formControlName="firstName">
-        {{ form.controls['director'].controls['firstName'].errors| json }}
+        <app-form-error [control]="form.controls['director'].controls['firstName']"></app-form-error>
     </div>
 
     <button (click)="addCategory()">Ajouter une categorie</button>
