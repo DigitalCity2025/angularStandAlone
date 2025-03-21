@@ -1,3 +1,9 @@
 .input-group {
-    margin: 1.5em 0;
+    margin-top: 1.5em;
+}
+
+.row {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
 }

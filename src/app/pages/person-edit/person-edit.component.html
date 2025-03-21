@@ -1,63 +1,71 @@
 <form [formGroup]="form">
     <p-fieldset legend="Coordonnées">
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="lastName">
-                <label>Nom</label>
-            </p-float-label>
-            <app-form-error [control]="form.get('lastName')!"></app-form-error>
+        <div class="row">
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="lastName">
+                    <label>Nom</label>
+                </p-float-label>
+                <app-form-error [control]="form.get('lastName')!"></app-form-error>
+            </div>
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="firstName">
+                    <label>Prénom</label>
+                </p-float-label>
+                <app-form-error [control]="form.get('firstName')!"></app-form-error>
+            </div>
         </div>
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="firstName">
-                <label>Prénom</label>
-            </p-float-label>
-            <app-form-error [control]="form.get('firstName')!"></app-form-error>
-        </div>
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="email">
-                <label>Email</label>
-            </p-float-label>
-            <app-form-error [control]="form.get('email')!"></app-form-error>
-        </div>
-        <div class="input-group">
-            <p-float-label>
-                <p-calendar formControlName="birthDate"></p-calendar>
-                <label>Date de naissance</label>
-            </p-float-label>
-            <app-form-error [control]="form.get('birthDate')!"></app-form-error>
+        <div class="row">
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="email">
+                    <label>Email</label>
+                </p-float-label>
+                <app-form-error [control]="form.get('email')!"></app-form-error>
+            </div>
+            <div class="input-group">
+                <p-float-label>
+                    <p-calendar formControlName="birthDate" dateFormat="dd/mm/yy"></p-calendar>
+                    <label>Date de naissance</label>
+                </p-float-label>
+                <app-form-error [control]="form.get('birthDate')!"></app-form-error>
+            </div>
         </div>
     </p-fieldset>
     
     <p-fieldset legend="Adresse" [formGroup]="addressForm">
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="street">
-                <label>Rue</label>
-            </p-float-label>
-            <app-form-error [control]="addressForm.get('street')!"></app-form-error>
+        <div class="row">
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="street">
+                    <label>Rue</label>
+                </p-float-label>
+                <app-form-error [control]="addressForm.get('street')!"></app-form-error>
+            </div>
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="number">
+                    <label>N°</label>
+                </p-float-label>
+                <app-form-error [control]="addressForm.get('number')!"></app-form-error>
+            </div>
         </div>
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="number">
-                <label>N°</label>
-            </p-float-label>
-            <app-form-error [control]="addressForm.get('number')!"></app-form-error>
-        </div>
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="zipCode">
-                <label>Code Postal</label>
-            </p-float-label>
-            <app-form-error [control]="addressForm.get('zipCode')!"></app-form-error>
-        </div>
-        <div class="input-group">
-            <p-float-label>
-                <input pInputText type="text" formControlName="city">
-                <label>Ville</label>
-            </p-float-label>
-            <app-form-error [control]="addressForm.get('city')!"></app-form-error>
+        <div class="row">
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="zipCode">
+                    <label>Code Postal</label>
+                </p-float-label>
+                <app-form-error [control]="addressForm.get('zipCode')!"></app-form-error>
+            </div>
+            <div class="input-group">
+                <p-float-label>
+                    <input pInputText type="text" formControlName="city">
+                    <label>Ville</label>
+                </p-float-label>
+                <app-form-error [control]="addressForm.get('city')!"></app-form-error>
+            </div>
         </div>
     </p-fieldset>
 
@@ -65,16 +73,19 @@
         <p-button icon="pi pi-plus" size="small" severity="info"
                   (onClick)="addPhone()"></p-button>
 
+        <app-form-error [control]="phonesFormArray"></app-form-error>
         @for(control of phonesFormArray.controls; track control) {
-            <div class="input-group" [formGroupName]="$index">
-                <div>
+            <div class="row" [formGroupName]="$index">
+                <p-button icon="pi pi-trash" size="small" severity="danger"
+                          (onClick)="removePhone($index)" ></p-button>
+                <div class="input-group">
                     <p-float-label>
                         <input pInputText formControlName="type">
                         <label>Type</label>
                     </p-float-label>
                     <app-form-error [control]="control.get('type')!"></app-form-error>
                 </div>
-                <div>
+                <div class="input-group">
                     <p-float-label>
                         <input pInputText formControlName="number">
                         <label>Numéro</label>
@@ -87,6 +98,6 @@
 </form>
 
 
-<p>Personne : {{ form.value | json }}</p>
-<p>Adresse : {{ addressForm.value | json }}</p>
-<p>Phones : {{ phonesFormArray.value | json }}</p>
+<p>Personne <br> {{ form.value | json }}</p>
+<p>Adresse <br> {{ addressForm.value | json }}</p>
+<p>Phones <br> {{ phonesFormArray.value | json }}</p>

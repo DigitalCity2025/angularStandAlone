@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { Patterns } from '../../constants/patterns';
 
 @Component({
   selector: 'app-form-error',
@@ -10,4 +11,6 @@ import { AbstractControl } from '@angular/forms';
 })
 export class FormErrorComponent {
   control = input.required<AbstractControl>(); 
+
+  Patterns = Patterns
 }

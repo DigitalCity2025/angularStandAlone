@@ -19,4 +19,15 @@
     @if(control().getError('email')) {
         <p>L'email n'est pas valide</p>
     }
+    @if(control().getError('pattern')) {
+        @if(control().getError('pattern').requiredPattern == Patterns.ZIP_CODE) {
+            <p>Code postal invalide</p>
+        }
+    }
+    @if(control().getError('notBefore')) {
+        <p>La date doit être plus petite que {{control().getError('notBefore').date | date: 'dd/MM/yyyy'}}</p>
+    }
+    @if(control().getError('listlength')) {
+        <p>Le nombre d'élements doit être compris entre {{control().getError('listlength').min}} et {{control().getError('listlength').max}}</p>
+    }
 }
